@@ -2,8 +2,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
-$primary-color: #c1d62e;
-$primary-color-hover: #b1c522;
+$primary-color: #e41a1a;
+$primary-color-hover: #e41a1abd;
+$text-color: #FFF;
 
 body { 
   padding-top: 80px; 
@@ -14,14 +15,10 @@ h1, h2, h3 {
 }
 
 .navbar { 
-  border-bottom: 3px solid #e7e7e7;
+  border-bottom: 3px solid $primary-color;
 }
 
-.navbar-light .navbar-brand {
-  color: $primary-color;
-}
-
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+.navbar-dark .navbar-brand:focus, .navbar-dark .navbar-brand:hover {
   color: $primary-color-hover;
 }
 
@@ -30,21 +27,40 @@ h1, h2, h3 {
   border-color: $primary-color;
 }
 
-.btn-primary {
+.btn-custom {
+  color: $text-color;
   background-color: $primary-color;
   border-color: $primary-color;
 }
 
-.btn-primary:hover {
+.btn-custom:hover {
+  color: $text-color;
   background-color: $primary-color-hover;
   border-color: $primary-color-hover;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-custom.disabled, .btn-custom:disabled {
+  color: $text-color;
   background-color: $primary-color;
   border-color: $primary-color;
 }
 
 .form-control:focus {
   border-color: $primary-color;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }

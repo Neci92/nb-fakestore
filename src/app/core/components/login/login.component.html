@@ -1,4 +1,19 @@
-
-<button 
-  (click)="login()"
-  class="btn btn-primary">Login with Google</button>
+<div class="row">
+  <div class="col-8 m-auto alert alert-primary">
+    <form>
+      <div class="form-group">
+        <label for="username">Email address</label>
+        <input type="email" class="form-control" id="username" value="Admin" disabled>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" value="Admin" disabled>
+        <small id="emailHelp" class="form-text text-muted">Everything is hardcoded currently</small>
+      </div>
+      <button type="submit" class="btn btn-outline-primary" (click)="adminLogin()">Login as admin</button>
+      <button title="Login with Google" (click)="login()" class="btn btn-primary">
+        <i class="fa fa-google"></i>
+      </button>
+    </form>
+  </div>
+</div>

@@ -27,6 +27,7 @@ import { ShoppingModule } from './shopping/shopping.module';
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'login', component: LoginComponent },
+      { path: '**', component: ProductsComponent }
     ])    
   ],
   providers: [

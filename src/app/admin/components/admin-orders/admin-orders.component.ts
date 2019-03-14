@@ -1,6 +1,5 @@
-import { Order } from '../../../shared/models/order';
 import { OrderService } from '../../../shared/services/order.service';
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-admin-orders',
@@ -10,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdminOrdersComponent {
   orders$;
 
-  constructor(private orderService: OrderService) { 
+  constructor(orderService: OrderService) { 
     this.orders$ = orderService.getOrders();
   }
 }

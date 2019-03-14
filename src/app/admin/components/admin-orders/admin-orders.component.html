@@ -1,4 +1,7 @@
-<h1>Orders</h1>
+<h1>All Orders</h1>
+<div class="alert alert-warning">
+  View button is disabled - this page is created as a place for future upgrade
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -12,7 +15,7 @@
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
-        <a href="#">View</a>
+        <button class="btn btn-secondary disabled" title="Not active yet">View</button>
       </td>
     </tr>
   </tbody> 

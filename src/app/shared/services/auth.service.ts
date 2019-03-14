@@ -1,6 +1,6 @@
 import { UserService } from './user.service';
 import { AppUser } from '../models/app-user';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
@@ -11,19 +11,30 @@ import * as firebase from 'firebase';
 @Injectable()
 export class AuthService {
   user$: Observable<firebase.User>;
+  returnUrl: string;
 
   constructor(
     private userService: UserService,
     private afAuth: AngularFireAuth, 
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,
+    private router: Router) { 
     this.user$ = afAuth.authState;    
   }
 
   login() {
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', this.returnUrl);
     
-    this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.router.navigateByUrl('/');
+  }
+
+  adminLogin() {
+    this.returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', this.returnUrl);
+    
+    this.afAuth.auth.signInWithEmailAndPassword('admin@admin.com', 'nemanja');
+    
   }
 
   logout() { 
